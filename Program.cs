@@ -2,7 +2,7 @@
 
 public class Program
 {
-    private static string txt = File.ReadAllText(@"./day02/input.txt");
+    static string txt = File.ReadAllText(@"./day02/input.txt");
     static int totalScore = 0;
     static string[][] file = txt.Split("\n").Select(letter => letter.Split()).ToArray();
 
@@ -14,6 +14,10 @@ public class Program
             string thereThrow = file[i][0];
             checkIfWin(thereThrow, yourThrow);
             checkIfDraw(thereThrow, yourThrow);
+            if (yourThrow == thereThrow)
+            {
+                totalScore += 3;
+            }
 
             switch (yourThrow)
             {
@@ -38,28 +42,36 @@ public class Program
             totalScore += 6;
 
         }
-        else if (thereThrow == "A" && yourThrow == "Y")
+        if (thereThrow == "A" && yourThrow == "Y")
         {
             totalScore += 6;
 
         }
-        else if (thereThrow == "B" && yourThrow == "Z")
+        if (thereThrow == "B" && yourThrow == "Z")
         {
             totalScore += 6;
 
         }
-        else
-        {
-            totalScore += 0;
-        }
+
     }
 
     public static void checkIfDraw(string thereThrow, string yourThrow)
     {
         // draw state
-        if (yourThrow == thereThrow)
+        if (thereThrow == "A" && yourThrow == "X")
         {
             totalScore += 3;
+
+        }
+        if (thereThrow == "B" && yourThrow == "Y")
+        {
+            totalScore += 3;
+
+        }
+        if (thereThrow == "C" && yourThrow == "Z")
+        {
+            totalScore += 3;
+
         }
     }
 
