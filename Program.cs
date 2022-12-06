@@ -12,13 +12,8 @@ public class Program
         {
             string yourThrow = file[i][1];
             string thereThrow = file[i][0];
-            checkIfWin(thereThrow, yourThrow);
-            checkIfDraw(thereThrow, yourThrow);
-            if (yourThrow == thereThrow)
-            {
-                totalScore += 3;
-            }
-
+            part2ScoreCalc(thereThrow, yourThrow);
+            // checkIfDraw(thereThrow, yourThrow);
             switch (yourThrow)
             {
                 case "X":
@@ -74,7 +69,25 @@ public class Program
 
         }
     }
+    public static void part2ScoreCalc(string thereThrow, string yourThrow)
+    {
+        // draw state
+        if (yourThrow == "X")
+        {
+            totalScore += 0;
 
+        }
+        if (yourThrow == "Y")
+        {
+            totalScore += 3;
+
+        }
+        if (yourThrow == "Z")
+        {
+            totalScore += 6;
+
+        }
+    }
 
 
     public static void Main(string[] args)
